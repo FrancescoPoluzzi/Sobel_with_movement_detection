@@ -1,0 +1,152 @@
+###################################################################
+# Executable Configuration
+###################################################################
+SHELL=/bin/bash
+include $(REL_PATH)/$(PROJECT_DEVICE)
+include $(REL_PATH)/$(PROJECT)
+
+TOPLEVEL := $(shell cat $(REL_PATH)/$(PROJECT_TOP))
+MAP_ARGS = --family=${FAMILY}
+FIT_ARGS = --part=${DEVICE} \
+           --set=FITTER_EFFORT=$(FITTER_EFFORT) \
+           --set=SMART_RECOMPILE=$(SMART_RECOMPILE) \
+           --set=CYCLONE_OPTIMIZATION_TECHNIQUE=$(CYCLONE_OPTIMIZATION_TECHNIQUE) \
+           --set=RESERVE_ALL_UNUSED_PINS=$(RESERVE_ALL_UNUSED_PINS) \
+           --set=MUX_RESTRUCTURE=$(MUX_RESTRUCTURE) \
+           --set=PHYSICAL_SYNTHESIS_REGISTER_RETIMING=$(PHYSICAL_SYNTHESIS_REGISTER_RETIMING) \
+           --set=PHYSICAL_SYNTHESIS_EFFORT=$(PHYSICAL_SYNTHESIS_EFFORT) \
+           --set=FMAX_REQUIREMENT=$(FMAX_REQUIREMENT) \
+           --set=RESERVE_NCEO_AFTER_CONFIGURATION=$(RESERVE_NCEO_AFTER_CONFIGURATION) \
+           --set=CYCLONEII_RESERVE_NCEO_AFTER_CONFIGURATION=$(CYCLONEII_RESERVE_NCEO_AFTER_CONFIGURATION)
+
+ASM_ARGS =
+STA_ARGS =
+
+###################################################################
+# Project Configuration: 
+# 
+# Specify the name of the design (project), the Quartus II Settings
+# File (.qsf), and the list of source files used.
+###################################################################
+
+VERILOG_FILES := $(shell cat $(REL_PATH)/$(PROJECT_LIST))
+SOURCE_FILES = $(VERILOG_FILES)
+
+ASSIGNMENT_FILES = $(REL_PATH)/$(PROJECT_QSF)
+
+
+###################################################################
+# Main Targets
+#
+# all: build everything
+# clean: remove output files and database
+###################################################################
+
+all: smart.log $(ASSIGNMENT_FILES) $(TOPLEVEL).map.rpt $(TOPLEVEL).fit.rpt $(TOPLEVEL).asm.rpt $(TOPLEVEL).rbf.rpt $(TOPLEVEL).sta.rpt 
+
+clean:
+	rm -rf *.rpt *.chg smart.log *.htm *.eqn *.pin *.sof *.pof *.rbf db
+	rm -rf *~
+
+map: smart.log $(TOPLEVEL).map.rpt
+
+fit: smart.log $(TOPLEVEL).fit.rpt
+
+asm: smart.log $(TOPLEVEL).asm.rpt
+
+rbf: smart.log $(TOPLEVEL).rbf.rpt
+
+sta: smart.log $(TOPLEVEL).sta.rpt
+
+smart: smart.log
+
+.PHONY: $(ASSIGNMENT_FILES)
+
+###################################################################
+# Target implementations
+###################################################################
+
+STAMP = echo done >
+
+$(TOPLEVEL).map.rpt: map.chg $(ASSIGNMENT_FILES)
+	@echo "==========================================================="
+	@echo "  Mapping "
+	@echo "==========================================================="
+	quartus_map $(MAP_ARGS) $(TOPLEVEL)
+	$(STAMP) fit.chg
+
+$(TOPLEVEL).fit.rpt: fit.chg $(TOPLEVEL).map.rpt
+	@echo "==========================================================="
+	@echo "  Fitter "
+	@echo "==========================================================="
+	quartus_fit $(FIT_ARGS) $(TOPLEVEL)
+	$(STAMP) asm.chg
+	$(STAMP) sta.chg
+
+$(TOPLEVEL).asm.rpt: asm.chg $(TOPLEVEL).fit.rpt
+	@echo "==========================================================="
+	@echo "  Assembling "
+	@echo "==========================================================="
+	quartus_asm $(ASM_ARGS) $(TOPLEVEL)
+
+$(TOPLEVEL).rbf.rpt: rbf.chg $(TOPLEVEL).rbf.rpt
+	@echo "==========================================================="
+	@echo "  Creating .rbf file "
+	@echo "==========================================================="
+	quartus_cpf -c $(TOPLEVEL).sof $(TOPLEVEL).rbf
+
+$(TOPLEVEL).sta.rpt: sta.chg $(TOPLEVEL).fit.rpt
+	@echo "==========================================================="
+	@echo "  TimeQuest Timing Analyzer "
+	@echo "==========================================================="
+	quartus_sta $(STA_ARGS) $(TOPLEVEL) 
+
+smart.log: $(ASSIGNMENT_FILES) 
+	quartus_sh --determine_smart_action $(TOPLEVEL) > smart.log
+
+###################################################################
+# Project initialization
+###################################################################
+prepare:
+	@echo "==========================================================="
+	@echo "  Prepare project $(TOPLEVEL) "
+	@echo "==========================================================="
+	@rm -f $(TOPLEVEL).qsf
+	@quartus_sh --prepare -f $(FAMILY) -d $(DEVICE) -t $(TOPLEVEL) $(TOPLEVEL)
+	@echo "" >> $(TOPLEVEL).qsf
+
+$(SOURCE_FILES): prepare
+	@echo "===> Add : $@ " 
+	@echo -e "\nset_global_assignment -name VERILOG_FILE $@" >> $(TOPLEVEL).qsf
+
+$(ASSIGNMENT_FILES): $(SOURCE_FILES)
+	@echo "************************************************************"
+	@echo "===> Add : $@ "
+	@echo "************************************************************"
+	@cat $@ >> $(TOPLEVEL).qsf
+	@echo "adapter driver usb_blaster" > $(TOPLEVEL).cfg
+	@echo "jtag newtap auto0 tap -irlen 10 -ircapture 0x01 -irmask 0x3 -expected-id 0x020f40dd" >> $(TOPLEVEL).cfg
+	@echo "pld create cycloneiv.pld intel -chain-position auto0.tap -family cycloneiv" >> $(TOPLEVEL).cfg
+	@echo "intel set_bscan cycloneiv.pld 1632" >> $(TOPLEVEL).cfg
+	@echo "intel set_check_pos cycloneiv.pld 1" >> $(TOPLEVEL).cfg
+	@echo "init" >> $(TOPLEVEL).cfg
+	@echo "scan_chain" >> $(TOPLEVEL).cfg
+	@echo "pld load cycloneiv.pld $(TOPLEVEL).rbf" >> $(TOPLEVEL).cfg
+	@echo "exit" >> $(TOPLEVEL).cfg
+
+
+map.chg:
+	$(STAMP) map.chg
+
+fit.chg:
+	$(STAMP) fit.chg
+
+sta.chg:
+	$(STAMP) sta.chg
+
+rbf.chg:
+	$(STAMP) rbf.chg
+
+asm.chg:
+	$(STAMP) asm.chg
+

@@ -1,0 +1,270 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 2019  Intel Corporation. All rights reserved.
+# Your use of Intel Corporation's design tools, logic functions 
+# and other software and tools, and any partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Intel Program License 
+# Subscription Agreement, the Intel Quartus Prime License Agreement,
+# the Intel FPGA IP License Agreement, or other applicable license
+# agreement, including, without limitation, that your use is for
+# the sole purpose of programming logic devices manufactured by
+# Intel and sold by Intel or its authorized distributors.  Please
+# refer to the applicable agreement for further details, at
+# https://fpgasoftware.intel.com/eula.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus Prime
+# Version 18.1.1 Build 646 04/11/2019 SJ Lite Edition
+# Date created = 16:37:18  June 08, 2024
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		or1420SingleCore_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Altera recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus Prime software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+set_global_assignment -name FAMILY "Cyclone IV E"
+set_global_assignment -name DEVICE EP4CE30F23C8
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 18.1.1
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "16:37:18  JUNE 08, 2024"
+set_global_assignment -name LAST_QUARTUS_VERSION "18.1.1 Lite Edition"
+set_global_assignment -name TOP_LEVEL_ENTITY or1420SingleCore
+
+set_global_assignment -name VERILOG_FILE ../../../modules/bios/verilog/bios1_rom.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/bios/verilog/bios.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/bus_arbiter/verilog/busArbiter.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/bus_arbiter/verilog/queueMemory.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/hdmi_720p/font/ami386__8x8.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/hdmi_720p/verilog/graphicsController.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/hdmi_720p/verilog/hdmi_720p.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/hdmi_720p/verilog/ram2kdp.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/hdmi_720p/verilog/ram4kdp.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/hdmi_720p/verilog/textController.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/hdmi_720p/verilog/tmds_encoder.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/hdmi_720p/verilog/screens.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/spi/verilog/spiShiftSingle.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/spi/verilog/spiShiftQuad.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/spi/verilog/spiBus.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/i2c/verilog/i2cMaster.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/i2c/verilog/i2cCustomInstr.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/profileCi/verilog/counter.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/profileCi/verilog/profileCi.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/grayscaleCi/verilog/rgb565Grayscale.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/grayscaleCi/verilog/rgb565ISE.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/gpio/verilog/gpio.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/ramDmaCi/verilog/dualPortSSram.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/ramDmaCi/verilog/ramDmaCi_sobel_movement_detection.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/camera/verilog/camera.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/delay/verilog/delayIse.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/swapbyteIse/verilog/swapByteIse.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/uart/verilog/baudGenerator.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/uart/verilog/uartFifoMemory.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/uart/verilog/uartRx.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/uart/verilog/uartTx.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/uart/verilog/uartRxFifo.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/uart/verilog/uartTxFifo.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/uart/verilog/uartBus.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/or1420/verilog/adder.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/or1420/verilog/dCacheSpm.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/or1420/verilog/dCache.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/or1420/verilog/decodeStage.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/or1420/verilog/executeStage.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/or1420/verilog/fetchStage.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/or1420/verilog/logicUnit.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/or1420/verilog/lutram_32x1.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/or1420/verilog/memoryStage.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/or1420/verilog/multiplier.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/or1420/verilog/or1420Top.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/or1420/verilog/regiserFile.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/or1420/verilog/shifter.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/or1420/verilog/sprUnit.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/sdram/verilog/sdramFifo.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/sdram/verilog/sdram.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/support/verilog/decimalCounter.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/support/verilog/processorId.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/support/verilog/synchroFlop.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/support/verilog/sram_16x32_dp_ar.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/support/verilog/sram_32x32_dp_ar.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/support/verilog/sram_512x32_dp.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/support/verilog/sram_512x32.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/support/verilog/sram_1024x16_dp.v
+
+set_global_assignment -name VERILOG_FILE ../../../modules/support/verilog/sram2048x8Dp.v
+
+set_global_assignment -name VERILOG_FILE ../verilog/or1420SingleCore.v
+#######################################################################
+##           Files from project.qsf configuration file                ##
+########################################################################
+
+### TCL File for pin assignment 
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../scripts/gecko4_or1420.tcl
+
+set_location_assignment PIN_N20 -to RxD
+set_location_assignment PIN_R16 -to SCL
+set_location_assignment PIN_N18 -to SDA
+set_location_assignment PIN_P22 -to TxD
+set_location_assignment PIN_R14 -to activePixel
+set_location_assignment PIN_AB11 -to biosBypass
+set_location_assignment PIN_P16 -to camData[0]
+set_location_assignment PIN_T17 -to camData[1]
+set_location_assignment PIN_P17 -to camData[2]
+set_location_assignment PIN_T18 -to camData[3]
+set_location_assignment PIN_R18 -to camData[4]
+set_location_assignment PIN_T16 -to camData[5]
+set_location_assignment PIN_R19 -to camData[6]
+set_location_assignment PIN_T15 -to camData[7]
+set_location_assignment PIN_N19 -to camHsync
+set_location_assignment PIN_Y13 -to camPclk
+set_location_assignment PIN_R17 -to camVsync
+set_location_assignment PIN_M22 -to camnReset
+set_location_assignment PIN_T22 -to clock12MHz
+set_location_assignment PIN_T1 -to clock50MHz
+set_location_assignment PIN_U15 -to hdmiBlue[0]
+set_location_assignment PIN_U19 -to hdmiBlue[1]
+set_location_assignment PIN_V16 -to hdmiBlue[2]
+set_location_assignment PIN_W17 -to hdmiBlue[3]
+set_location_assignment PIN_W15 -to hdmiGreen[0]
+set_location_assignment PIN_Y17 -to hdmiGreen[1]
+set_location_assignment PIN_AB19 -to hdmiGreen[2]
+set_location_assignment PIN_AA19 -to hdmiGreen[3]
+set_location_assignment PIN_AB17 -to hdmiRed[0]
+set_location_assignment PIN_AA17 -to hdmiRed[1]
+set_location_assignment PIN_T12 -to hdmiRed[2]
+set_location_assignment PIN_U12 -to hdmiRed[3]
+set_location_assignment PIN_P15 -to horizontalSync
+set_location_assignment PIN_AA11 -to nReset
+set_location_assignment PIN_V15 -to pixelClock
+set_location_assignment PIN_N5 -to sdramAddr[0]
+set_location_assignment PIN_U2 -to sdramAddr[10]
+set_location_assignment PIN_U8 -to sdramAddr[11]
+set_location_assignment PIN_V2 -to sdramAddr[12]
+set_location_assignment PIN_N6 -to sdramAddr[1]
+set_location_assignment PIN_P4 -to sdramAddr[2]
+set_location_assignment PIN_P5 -to sdramAddr[3]
+set_location_assignment PIN_W6 -to sdramAddr[4]
+set_location_assignment PIN_V7 -to sdramAddr[5]
+set_location_assignment PIN_V6 -to sdramAddr[6]
+set_location_assignment PIN_V5 -to sdramAddr[7]
+set_location_assignment PIN_V1 -to sdramAddr[8]
+set_location_assignment PIN_V4 -to sdramAddr[9]
+set_location_assignment PIN_M6 -to sdramBa[0]
+set_location_assignment PIN_M7 -to sdramBa[1]
+set_location_assignment PIN_M5 -to sdramCasN
+set_location_assignment PIN_U7 -to sdramCke
+set_location_assignment PIN_AA3 -to sdramClk
+set_location_assignment PIN_U1 -to sdramCsN
+set_location_assignment PIN_M1 -to sdramData[0]
+set_location_assignment PIN_Y1 -to sdramData[10]
+set_location_assignment PIN_Y2 -to sdramData[11]
+set_location_assignment PIN_Y3 -to sdramData[12]
+set_location_assignment PIN_AA1 -to sdramData[13]
+set_location_assignment PIN_AB3 -to sdramData[14]
+set_location_assignment PIN_AA4 -to sdramData[15]
+set_location_assignment PIN_M2 -to sdramData[1]
+set_location_assignment PIN_M3 -to sdramData[2]
+set_location_assignment PIN_N1 -to sdramData[3]
+set_location_assignment PIN_N2 -to sdramData[4]
+set_location_assignment PIN_P1 -to sdramData[5]
+set_location_assignment PIN_P2 -to sdramData[6]
+set_location_assignment PIN_P3 -to sdramData[7]
+set_location_assignment PIN_W1 -to sdramData[8]
+set_location_assignment PIN_W2 -to sdramData[9]
+set_location_assignment PIN_R1 -to sdramDqmN[0]
+set_location_assignment PIN_V3 -to sdramDqmN[1]
+set_location_assignment PIN_M4 -to sdramRasN
+set_location_assignment PIN_R2 -to sdramWeN
+set_location_assignment PIN_W14 -to spiIo2
+set_location_assignment PIN_U13 -to spiIo3
+set_location_assignment PIN_U14 -to spiNCs
+set_location_assignment PIN_V13 -to spiScl
+set_location_assignment PIN_W13 -to spiSiIo0
+set_location_assignment PIN_V14 -to spiSoIo1
+set_location_assignment PIN_R15 -to verticalSync
+set_global_assignment -name SOURCE_FILE ../scripts/gecko4_or1420.tcl
+set_global_assignment -name SDC_FILE ../scripts/clocks_sdc.tcl
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to SCL
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to SDA
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to spiIo2
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to spiIo3
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to spiSiIo0
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to spiSoIo1
+set_global_assignment -name CYCLONEII_RESERVE_NCEO_AFTER_CONFIGURATION "USE AS REGULAR IO"
+set_global_assignment -name RESERVE_ALL_UNUSED_PINS "AS INPUT TRI-STATED"
+set_global_assignment -name FMAX_REQUIREMENT "80 MHz"
+set_global_assignment -name MUX_RESTRUCTURE OFF
+set_global_assignment -name CYCLONE_OPTIMIZATION_TECHNIQUE SPEED
+set_global_assignment -name SMART_RECOMPILE ON
+set_global_assignment -name PHYSICAL_SYNTHESIS_REGISTER_RETIMING ON
+set_global_assignment -name FITTER_EFFORT "STANDARD FIT"
+set_global_assignment -name PHYSICAL_SYNTHESIS_EFFORT EXTRA

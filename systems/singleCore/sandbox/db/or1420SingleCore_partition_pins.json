@@ -1,0 +1,333 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "TxD",
+					"strict" : false
+				},
+				{
+					"name" : "sdramClk",
+					"strict" : false
+				},
+				{
+					"name" : "sdramCke",
+					"strict" : false
+				},
+				{
+					"name" : "sdramCsN",
+					"strict" : false
+				},
+				{
+					"name" : "sdramRasN",
+					"strict" : false
+				},
+				{
+					"name" : "sdramCasN",
+					"strict" : false
+				},
+				{
+					"name" : "sdramWeN",
+					"strict" : false
+				},
+				{
+					"name" : "sdramDqmN[0]",
+					"strict" : false
+				},
+				{
+					"name" : "sdramDqmN[1]",
+					"strict" : false
+				},
+				{
+					"name" : "sdramAddr[0]",
+					"strict" : false
+				},
+				{
+					"name" : "sdramAddr[1]",
+					"strict" : false
+				},
+				{
+					"name" : "sdramAddr[2]",
+					"strict" : false
+				},
+				{
+					"name" : "sdramAddr[3]",
+					"strict" : false
+				},
+				{
+					"name" : "sdramAddr[4]",
+					"strict" : false
+				},
+				{
+					"name" : "sdramAddr[5]",
+					"strict" : false
+				},
+				{
+					"name" : "sdramAddr[6]",
+					"strict" : false
+				},
+				{
+					"name" : "sdramAddr[7]",
+					"strict" : false
+				},
+				{
+					"name" : "sdramAddr[8]",
+					"strict" : false
+				},
+				{
+					"name" : "sdramAddr[9]",
+					"strict" : false
+				},
+				{
+					"name" : "sdramAddr[10]",
+					"strict" : false
+				},
+				{
+					"name" : "sdramAddr[11]",
+					"strict" : false
+				},
+				{
+					"name" : "sdramAddr[12]",
+					"strict" : false
+				},
+				{
+					"name" : "sdramBa[0]",
+					"strict" : false
+				},
+				{
+					"name" : "sdramBa[1]",
+					"strict" : false
+				},
+				{
+					"name" : "spiScl",
+					"strict" : false
+				},
+				{
+					"name" : "spiNCs",
+					"strict" : false
+				},
+				{
+					"name" : "pixelClock",
+					"strict" : false
+				},
+				{
+					"name" : "horizontalSync",
+					"strict" : false
+				},
+				{
+					"name" : "verticalSync",
+					"strict" : false
+				},
+				{
+					"name" : "activePixel",
+					"strict" : false
+				},
+				{
+					"name" : "hdmiRed[0]",
+					"strict" : false
+				},
+				{
+					"name" : "hdmiRed[1]",
+					"strict" : false
+				},
+				{
+					"name" : "hdmiRed[2]",
+					"strict" : false
+				},
+				{
+					"name" : "hdmiRed[3]",
+					"strict" : false
+				},
+				{
+					"name" : "hdmiGreen[0]",
+					"strict" : false
+				},
+				{
+					"name" : "hdmiGreen[1]",
+					"strict" : false
+				},
+				{
+					"name" : "hdmiGreen[2]",
+					"strict" : false
+				},
+				{
+					"name" : "hdmiGreen[3]",
+					"strict" : false
+				},
+				{
+					"name" : "hdmiBlue[0]",
+					"strict" : false
+				},
+				{
+					"name" : "hdmiBlue[1]",
+					"strict" : false
+				},
+				{
+					"name" : "hdmiBlue[2]",
+					"strict" : false
+				},
+				{
+					"name" : "hdmiBlue[3]",
+					"strict" : false
+				},
+				{
+					"name" : "SCL",
+					"strict" : false
+				},
+				{
+					"name" : "camnReset",
+					"strict" : false
+				},
+				{
+					"name" : "sdramData[0]",
+					"strict" : false
+				},
+				{
+					"name" : "sdramData[1]",
+					"strict" : false
+				},
+				{
+					"name" : "sdramData[2]",
+					"strict" : false
+				},
+				{
+					"name" : "sdramData[3]",
+					"strict" : false
+				},
+				{
+					"name" : "sdramData[4]",
+					"strict" : false
+				},
+				{
+					"name" : "sdramData[5]",
+					"strict" : false
+				},
+				{
+					"name" : "sdramData[6]",
+					"strict" : false
+				},
+				{
+					"name" : "sdramData[7]",
+					"strict" : false
+				},
+				{
+					"name" : "sdramData[8]",
+					"strict" : false
+				},
+				{
+					"name" : "sdramData[9]",
+					"strict" : false
+				},
+				{
+					"name" : "sdramData[10]",
+					"strict" : false
+				},
+				{
+					"name" : "sdramData[11]",
+					"strict" : false
+				},
+				{
+					"name" : "sdramData[12]",
+					"strict" : false
+				},
+				{
+					"name" : "sdramData[13]",
+					"strict" : false
+				},
+				{
+					"name" : "sdramData[14]",
+					"strict" : false
+				},
+				{
+					"name" : "sdramData[15]",
+					"strict" : false
+				},
+				{
+					"name" : "spiSiIo0",
+					"strict" : false
+				},
+				{
+					"name" : "spiSoIo1",
+					"strict" : false
+				},
+				{
+					"name" : "spiIo2",
+					"strict" : false
+				},
+				{
+					"name" : "spiIo3",
+					"strict" : false
+				},
+				{
+					"name" : "SDA",
+					"strict" : false
+				},
+				{
+					"name" : "nReset",
+					"strict" : false
+				},
+				{
+					"name" : "clock12MHz",
+					"strict" : false
+				},
+				{
+					"name" : "camPclk",
+					"strict" : false
+				},
+				{
+					"name" : "biosBypass",
+					"strict" : false
+				},
+				{
+					"name" : "camHsync",
+					"strict" : false
+				},
+				{
+					"name" : "camData[4]",
+					"strict" : false
+				},
+				{
+					"name" : "camData[3]",
+					"strict" : false
+				},
+				{
+					"name" : "camData[2]",
+					"strict" : false
+				},
+				{
+					"name" : "camData[1]",
+					"strict" : false
+				},
+				{
+					"name" : "camData[0]",
+					"strict" : false
+				},
+				{
+					"name" : "camData[7]",
+					"strict" : false
+				},
+				{
+					"name" : "camData[6]",
+					"strict" : false
+				},
+				{
+					"name" : "camData[5]",
+					"strict" : false
+				},
+				{
+					"name" : "camVsync",
+					"strict" : false
+				},
+				{
+					"name" : "RxD",
+					"strict" : false
+				},
+				{
+					"name" : "clock50MHz",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

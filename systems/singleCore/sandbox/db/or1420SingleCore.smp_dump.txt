@@ -1,0 +1,291 @@
+
+State Machine - |or1420SingleCore|busArbiter:arbiter|s_stateReg
+Name s_stateReg.INIT_BUS_ERROR s_stateReg.REMOVE s_stateReg.END_TRANSACTION s_stateReg.BUS_ERROR s_stateReg.SERVICING s_stateReg.WAIT_BEGIN s_stateReg.GRANT s_stateReg.IDLE 
+s_stateReg.IDLE 0 0 0 0 0 0 0 0 
+s_stateReg.GRANT 0 0 0 0 0 0 1 1 
+s_stateReg.WAIT_BEGIN 0 0 0 0 0 1 0 1 
+s_stateReg.SERVICING 0 0 0 0 1 0 0 1 
+s_stateReg.BUS_ERROR 0 0 0 1 0 0 0 1 
+s_stateReg.END_TRANSACTION 0 0 1 0 0 0 0 1 
+s_stateReg.REMOVE 0 1 0 0 0 0 0 1 
+s_stateReg.INIT_BUS_ERROR 1 0 0 0 0 0 0 1 
+
+State Machine - |or1420SingleCore|bios:start|s_stateMachineReg
+Name s_stateMachineReg.ENDTRANSACTION s_stateMachineReg.BURST s_stateMachineReg.INTERPRET s_stateMachineReg.IDLE s_stateMachineReg.BUSERROR 
+s_stateMachineReg.IDLE 0 0 0 0 0 
+s_stateMachineReg.INTERPRET 0 0 1 1 0 
+s_stateMachineReg.BURST 0 1 0 1 0 
+s_stateMachineReg.ENDTRANSACTION 1 0 0 1 0 
+s_stateMachineReg.BUSERROR 0 0 0 1 1 
+
+State Machine - |or1420SingleCore|spiBus:flash|spiShiftSingle:single|s_stateReg
+Name s_stateReg.RESCONTREAD s_stateReg.WAITWRITEBYTE8 s_stateReg.WAITWRITEBYTE7 s_stateReg.WAITWRITEBYTE6 s_stateReg.WAITWRITEBYTE5 s_stateReg.WAITWRITEBYTE4 s_stateReg.WAITWRITEBYTE3 s_stateReg.WAITWRITEBYTE2 s_stateReg.WAITWRITEBYTE1 s_stateReg.WAITWRITECMD s_stateReg.INITWRITE s_stateReg.WAITSECTORERASE s_stateReg.INITSECTORERASE s_stateReg.WESTATUSDONE s_stateReg.WAITWESTATUS s_stateReg.INITWESTATUS s_stateReg.WEENADONE s_stateReg.WAITWEENA s_stateReg.INITWEENA s_stateReg.WRITESTATUS3 s_stateReg.READSTATUS3 s_stateReg.INITSTATUS3 s_stateReg.WRITESTATUS2 s_stateReg.READSTATUS2 s_stateReg.INITSTATUS2 s_stateReg.WRITESTATUS1 s_stateReg.READSTATUS1 s_stateReg.INITSTATUS1 s_stateReg.LOADJEDEC s_stateReg.STOREJDEC s_stateReg.READJDEC s_stateReg.IDLE s_stateReg.WAITCONTREAD 
+s_stateReg.IDLE 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+s_stateReg.READJDEC 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 
+s_stateReg.STOREJDEC 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 0 
+s_stateReg.LOADJEDEC 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 0 
+s_stateReg.INITSTATUS1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 0 
+s_stateReg.READSTATUS1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 0 
+s_stateReg.WRITESTATUS1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0 
+s_stateReg.INITSTATUS2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 
+s_stateReg.READSTATUS2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 
+s_stateReg.WRITESTATUS2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 0 
+s_stateReg.INITSTATUS3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 0 
+s_stateReg.READSTATUS3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 0 
+s_stateReg.WRITESTATUS3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0 
+s_stateReg.INITWEENA 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+s_stateReg.WAITWEENA 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+s_stateReg.WEENADONE 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+s_stateReg.INITWESTATUS 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+s_stateReg.WAITWESTATUS 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+s_stateReg.WESTATUSDONE 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+s_stateReg.INITSECTORERASE 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+s_stateReg.WAITSECTORERASE 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+s_stateReg.INITWRITE 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+s_stateReg.WAITWRITECMD 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+s_stateReg.WAITWRITEBYTE1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+s_stateReg.WAITWRITEBYTE2 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+s_stateReg.WAITWRITEBYTE3 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+s_stateReg.WAITWRITEBYTE4 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+s_stateReg.WAITWRITEBYTE5 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+s_stateReg.WAITWRITEBYTE6 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+s_stateReg.WAITWRITEBYTE7 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+s_stateReg.WAITWRITEBYTE8 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+s_stateReg.RESCONTREAD 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+s_stateReg.WAITCONTREAD 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+
+State Machine - |or1420SingleCore|spiBus:flash|spiShiftSingle:single|s_cntrlReg
+Name s_cntrlReg.WRITEERROR s_cntrlReg.WAITINITWRITE3 s_cntrlReg.INITWRITE3 s_cntrlReg.WAITINITWRITE2 s_cntrlReg.INITWRITE2 s_cntrlReg.WAITINITWRITE1 s_cntrlReg.INITWRITE1 s_cntrlReg.WAITINITWRITE0 s_cntrlReg.INITWRITE0 s_cntrlReg.ERASEERROR s_cntrlReg.WAITINITERASE3 s_cntrlReg.INITERASE3 s_cntrlReg.WAITINITERASE2 s_cntrlReg.INITERASE2 s_cntrlReg.WAITINITERASE1 s_cntrlReg.INITERASE1 s_cntrlReg.WAITINITERASE0 s_cntrlReg.INITERASE0 s_cntrlReg.NOP s_cntrlReg.WAITSTATUS3 s_cntrlReg.INITSTATR3 s_cntrlReg.WAITSTATUS2 s_cntrlReg.INITSTATR2 s_cntrlReg.WAITBUSYWAIT1 s_cntrlReg.INITBUSYWAIT1 s_cntrlReg.WAITWRITESTATUSREGS s_cntrlReg.WRITESTATUSREGS s_cntrlReg.WAITINITSTATUSWRITE s_cntrlReg.INITSTATUSWRITE s_cntrlReg.WAITJEDECID s_cntrlReg.READJEDECID s_cntrlReg.WAITRESCONTREAD s_cntrlReg.INITRESCONTREAD s_cntrlReg.RES 
+s_cntrlReg.RES 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+s_cntrlReg.INITRESCONTREAD 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+s_cntrlReg.WAITRESCONTREAD 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+s_cntrlReg.READJEDECID 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+s_cntrlReg.WAITJEDECID 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+s_cntrlReg.INITSTATUSWRITE 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+s_cntrlReg.WAITINITSTATUSWRITE 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+s_cntrlReg.WRITESTATUSREGS 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+s_cntrlReg.WAITWRITESTATUSREGS 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+s_cntrlReg.INITBUSYWAIT1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+s_cntrlReg.WAITBUSYWAIT1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+s_cntrlReg.INITSTATR2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+s_cntrlReg.WAITSTATUS2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+s_cntrlReg.INITSTATR3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_cntrlReg.WAITSTATUS3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_cntrlReg.NOP 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_cntrlReg.INITERASE0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_cntrlReg.WAITINITERASE0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_cntrlReg.INITERASE1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_cntrlReg.WAITINITERASE1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_cntrlReg.INITERASE2 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_cntrlReg.WAITINITERASE2 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_cntrlReg.INITERASE3 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_cntrlReg.WAITINITERASE3 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_cntrlReg.ERASEERROR 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_cntrlReg.INITWRITE0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_cntrlReg.WAITINITWRITE0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_cntrlReg.INITWRITE1 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_cntrlReg.WAITINITWRITE1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_cntrlReg.INITWRITE2 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_cntrlReg.WAITINITWRITE2 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_cntrlReg.INITWRITE3 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_cntrlReg.WAITINITWRITE3 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_cntrlReg.WRITEERROR 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |or1420SingleCore|spiBus:flash|spiShiftQuad:quad|s_stateReg
+Name s_stateReg.WAITDUMMY s_stateReg.WAITADDRESS s_stateReg.INITADDRESS s_stateReg.WAITCOMMAND s_stateReg.SENDCOMMAND s_stateReg.CHECKBUSY s_stateReg.WAITBUSY s_stateReg.IDLE s_stateReg.WAITWORD 
+s_stateReg.IDLE 0 0 0 0 0 0 0 0 0 
+s_stateReg.WAITBUSY 0 0 0 0 0 0 1 1 0 
+s_stateReg.CHECKBUSY 0 0 0 0 0 1 0 1 0 
+s_stateReg.SENDCOMMAND 0 0 0 0 1 0 0 1 0 
+s_stateReg.WAITCOMMAND 0 0 0 1 0 0 0 1 0 
+s_stateReg.INITADDRESS 0 0 1 0 0 0 0 1 0 
+s_stateReg.WAITADDRESS 0 1 0 0 0 0 0 1 0 
+s_stateReg.WAITDUMMY 1 0 0 0 0 0 0 1 0 
+s_stateReg.WAITWORD 0 0 0 0 0 0 0 1 1 
+
+State Machine - |or1420SingleCore|screens:hdmi|graphicsController:graphics|s_dmaState
+Name s_dmaState.READ1 s_dmaState.INIT1 s_dmaState.REQUEST1 s_dmaState.READ_DONE s_dmaState.INIT_WRITE_BLACK s_dmaState.WRITE_BLACK s_dmaState.ERROR s_dmaState.READ s_dmaState.INIT s_dmaState.REQUEST s_dmaState.IDLE 
+s_dmaState.IDLE 0 0 0 0 0 0 0 0 0 0 0 
+s_dmaState.REQUEST 0 0 0 0 0 0 0 0 0 1 1 
+s_dmaState.INIT 0 0 0 0 0 0 0 0 1 0 1 
+s_dmaState.READ 0 0 0 0 0 0 0 1 0 0 1 
+s_dmaState.ERROR 0 0 0 0 0 0 1 0 0 0 1 
+s_dmaState.WRITE_BLACK 0 0 0 0 0 1 0 0 0 0 1 
+s_dmaState.INIT_WRITE_BLACK 0 0 0 0 1 0 0 0 0 0 1 
+s_dmaState.READ_DONE 0 0 0 1 0 0 0 0 0 0 1 
+s_dmaState.REQUEST1 0 0 1 0 0 0 0 0 0 0 1 
+s_dmaState.INIT1 0 1 0 0 0 0 0 0 0 0 1 
+s_dmaState.READ1 1 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |or1420SingleCore|screens:hdmi|hdmi_720p:generator|s_verticalState
+Name s_verticalState.BACKPORCH s_verticalState.FRONTPORCH s_verticalState.ACTIVEPIXEL s_verticalState.SYNC 
+s_verticalState.SYNC 0 0 0 0 
+s_verticalState.ACTIVEPIXEL 0 0 1 1 
+s_verticalState.FRONTPORCH 0 1 0 1 
+s_verticalState.BACKPORCH 1 0 0 1 
+
+State Machine - |or1420SingleCore|screens:hdmi|hdmi_720p:generator|s_horizontalState
+Name s_horizontalState.BACKPORCH s_horizontalState.FRONTPORCH s_horizontalState.ACTIVEPIXEL s_horizontalState.SYNC 
+s_horizontalState.SYNC 0 0 0 0 
+s_horizontalState.ACTIVEPIXEL 0 0 1 1 
+s_horizontalState.FRONTPORCH 0 1 0 1 
+s_horizontalState.BACKPORCH 1 0 0 1 
+
+State Machine - |or1420SingleCore|camera:camIf|s_stateMachineReg
+Name s_stateMachineReg.END_TRANS2 s_stateMachineReg.END_TRANS1 s_stateMachineReg.DO_BURST1 s_stateMachineReg.INIT_BURST1 s_stateMachineReg.REQUEST_BUS1 s_stateMachineReg.IDLE 
+s_stateMachineReg.IDLE 0 0 0 0 0 0 
+s_stateMachineReg.REQUEST_BUS1 0 0 0 0 1 1 
+s_stateMachineReg.INIT_BURST1 0 0 0 1 0 1 
+s_stateMachineReg.DO_BURST1 0 0 1 0 0 1 
+s_stateMachineReg.END_TRANS1 0 1 0 0 0 1 
+s_stateMachineReg.END_TRANS2 1 0 0 0 0 1 
+
+State Machine - |or1420SingleCore|ramDmaCi:ramDma|s_SobelCurrentStateReg
+Name s_SobelCurrentStateReg.SOBEL_FILTER s_SobelCurrentStateReg.FILL_COMPARISON_BUFFER s_SobelCurrentStateReg.FILL_WINDOW s_SobelCurrentStateReg.IDLE_SOBEL 
+s_SobelCurrentStateReg.IDLE_SOBEL 0 0 0 0 
+s_SobelCurrentStateReg.FILL_WINDOW 0 0 1 1 
+s_SobelCurrentStateReg.FILL_COMPARISON_BUFFER 0 1 0 1 
+s_SobelCurrentStateReg.SOBEL_FILTER 1 0 0 1 
+
+State Machine - |or1420SingleCore|ramDmaCi:ramDma|s_dmaCurrentStateReg
+Name s_dmaCurrentStateReg.END_TRANSACTION_ERROR s_dmaCurrentStateReg.DO_WRITE s_dmaCurrentStateReg.WAIT_END s_dmaCurrentStateReg.DO_READ s_dmaCurrentStateReg.SET_UP_TRANSACTION s_dmaCurrentStateReg.REQUEST_BUS s_dmaCurrentStateReg.INIT s_dmaCurrentStateReg.IDLE s_dmaCurrentStateReg.END_WRITE_TRANSACTION 
+s_dmaCurrentStateReg.IDLE 0 0 0 0 0 0 0 0 0 
+s_dmaCurrentStateReg.INIT 0 0 0 0 0 0 1 1 0 
+s_dmaCurrentStateReg.REQUEST_BUS 0 0 0 0 0 1 0 1 0 
+s_dmaCurrentStateReg.SET_UP_TRANSACTION 0 0 0 0 1 0 0 1 0 
+s_dmaCurrentStateReg.DO_READ 0 0 0 1 0 0 0 1 0 
+s_dmaCurrentStateReg.WAIT_END 0 0 1 0 0 0 0 1 0 
+s_dmaCurrentStateReg.DO_WRITE 0 1 0 0 0 0 0 1 0 
+s_dmaCurrentStateReg.END_TRANSACTION_ERROR 1 0 0 0 0 0 0 1 0 
+s_dmaCurrentStateReg.END_WRITE_TRANSACTION 0 0 0 0 0 0 0 1 1 
+
+State Machine - |or1420SingleCore|i2cCustomInstr:i2cm|i2cMaster:master|s_stateMachineReg
+Name s_stateMachineReg.DIR s_stateMachineReg.ACK3 s_stateMachineReg.D0 s_stateMachineReg.D1 s_stateMachineReg.D2 s_stateMachineReg.D3 s_stateMachineReg.D4 s_stateMachineReg.D5 s_stateMachineReg.D6 s_stateMachineReg.D7 s_stateMachineReg.ACK2 s_stateMachineReg.R0 s_stateMachineReg.R1 s_stateMachineReg.R2 s_stateMachineReg.R3 s_stateMachineReg.R4 s_stateMachineReg.R5 s_stateMachineReg.R6 s_stateMachineReg.R7 s_stateMachineReg.SENDSTOP s_stateMachineReg.ACK1 s_stateMachineReg.A0 s_stateMachineReg.A1 s_stateMachineReg.A2 s_stateMachineReg.A3 s_stateMachineReg.A4 s_stateMachineReg.A5 s_stateMachineReg.A6 s_stateMachineReg.SENDSTART s_stateMachineReg.IDLE 
+s_stateMachineReg.IDLE 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+s_stateMachineReg.SENDSTART 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+s_stateMachineReg.A6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+s_stateMachineReg.A5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+s_stateMachineReg.A4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+s_stateMachineReg.A3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+s_stateMachineReg.A2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+s_stateMachineReg.A1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+s_stateMachineReg.A0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+s_stateMachineReg.ACK1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+s_stateMachineReg.SENDSTOP 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+s_stateMachineReg.R7 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+s_stateMachineReg.R6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+s_stateMachineReg.R5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_stateMachineReg.R4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_stateMachineReg.R3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_stateMachineReg.R2 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_stateMachineReg.R1 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_stateMachineReg.R0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_stateMachineReg.ACK2 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_stateMachineReg.D7 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_stateMachineReg.D6 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_stateMachineReg.D5 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_stateMachineReg.D4 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_stateMachineReg.D3 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_stateMachineReg.D2 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_stateMachineReg.D1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_stateMachineReg.D0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_stateMachineReg.ACK3 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_stateMachineReg.DIR 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |or1420SingleCore|or1420Top:cpu1|dCache:loadStore|s_busStateReg
+Name s_busStateReg.END_WRITE s_busStateReg.DO_WRITE s_busStateReg.SIG_DONE s_busStateReg.BUS_ERROR s_busStateReg.WAIT_READ s_busStateReg.INIT_TRANSACTION s_busStateReg.REQUEST_BUS s_busStateReg.NOOP 
+s_busStateReg.NOOP 0 0 0 0 0 0 0 0 
+s_busStateReg.REQUEST_BUS 0 0 0 0 0 0 1 1 
+s_busStateReg.INIT_TRANSACTION 0 0 0 0 0 1 0 1 
+s_busStateReg.WAIT_READ 0 0 0 0 1 0 0 1 
+s_busStateReg.BUS_ERROR 0 0 0 1 0 0 0 1 
+s_busStateReg.SIG_DONE 0 0 1 0 0 0 0 1 
+s_busStateReg.DO_WRITE 0 1 0 0 0 0 0 1 
+s_busStateReg.END_WRITE 1 0 0 0 0 0 0 1 
+
+State Machine - |or1420SingleCore|or1420Top:cpu1|dCache:loadStore|s_stateReg
+Name s_stateReg.SIGNAL_DONE s_stateReg.WAIT_FOR_ACTION s_stateReg.REQUEST_ACTION s_stateReg.IDLE 
+s_stateReg.IDLE 0 0 0 0 
+s_stateReg.REQUEST_ACTION 0 0 1 1 
+s_stateReg.WAIT_FOR_ACTION 0 1 0 1 
+s_stateReg.SIGNAL_DONE 1 0 0 1 
+
+State Machine - |or1420SingleCore|or1420Top:cpu1|decodeStage:decode|s_exceptionModeReg
+Name s_exceptionModeReg.101 s_exceptionModeReg.100 s_exceptionModeReg.011 s_exceptionModeReg.010 s_exceptionModeReg.001 s_exceptionModeReg.000 
+s_exceptionModeReg.000 0 0 0 0 0 0 
+s_exceptionModeReg.001 0 0 0 0 1 1 
+s_exceptionModeReg.010 0 0 0 1 0 1 
+s_exceptionModeReg.011 0 0 1 0 0 1 
+s_exceptionModeReg.100 0 1 0 0 0 1 
+s_exceptionModeReg.101 1 0 0 0 0 1 
+
+State Machine - |or1420SingleCore|or1420Top:cpu1|fetchStage:fetch|s_busStateReg
+Name s_busStateReg.BUS_ERROR s_busStateReg.SIGNAL_DONE s_busStateReg.WAIT_BURST s_busStateReg.INIT_TRANSACTION s_busStateReg.REQUEST_BUS s_busStateReg.NOP 
+s_busStateReg.NOP 0 0 0 0 0 0 
+s_busStateReg.REQUEST_BUS 0 0 0 0 1 1 
+s_busStateReg.INIT_TRANSACTION 0 0 0 1 0 1 
+s_busStateReg.WAIT_BURST 0 0 1 0 0 1 
+s_busStateReg.SIGNAL_DONE 0 1 0 0 0 1 
+s_busStateReg.BUS_ERROR 1 0 0 0 0 1 
+
+State Machine - |or1420SingleCore|or1420Top:cpu1|fetchStage:fetch|s_stateReg
+Name s_stateReg.UPDATE_TAG s_stateReg.WAIT_CACHE_LINE s_stateReg.REQUEST_CACHE_LINE s_stateReg.IDLE s_stateReg.LOOKUP 
+s_stateReg.IDLE 0 0 0 0 0 
+s_stateReg.REQUEST_CACHE_LINE 0 0 1 1 0 
+s_stateReg.WAIT_CACHE_LINE 0 1 0 1 0 
+s_stateReg.UPDATE_TAG 1 0 0 1 0 
+s_stateReg.LOOKUP 0 0 0 1 1 
+
+State Machine - |or1420SingleCore|sdramController:sdram|s_sdramCurrentState
+Name s_sdramCurrentState.SECOND_BURST s_sdramCurrentState.WAIT_WRITE_HI s_sdramCurrentState.WAIT_READ_BURST4 s_sdramCurrentState.WAIT_WRITE_PRECHARGE s_sdramCurrentState.WRITE_HI s_sdramCurrentState.WAIT_WRITE_LO s_sdramCurrentState.WRITE_LO s_sdramCurrentState.WRITE_PRECHARGE s_sdramCurrentState.INIT_WORD_WRITE s_sdramCurrentState.END_READ_TRANSACTION s_sdramCurrentState.DO_READ s_sdramCurrentState.WAIT_READ_BURST3 s_sdramCurrentState.WAIT_READ_BURST2 s_sdramCurrentState.INIT_READ_BURST2 s_sdramCurrentState.WAIT_READ_BURST1 s_sdramCurrentState.INIT_READ_BURST1 s_sdramCurrentState.INIT_READ_WRITE s_sdramCurrentState.WAIT_AUTO_REFRESH s_sdramCurrentState.DO_AUTO_REFRESH s_sdramCurrentState.IDLE s_sdramCurrentState.WAIT_EXTENDED_MODE_REG s_sdramCurrentState.SET_EXTENDED_MODE_REG s_sdramCurrentState.WAIT_MODE_REG s_sdramCurrentState.SET_MODE_REG s_sdramCurrentState.WAIT_AUTO_REFRESH2 s_sdramCurrentState.DO_AUTO_REFRESH2 s_sdramCurrentState.WAIT_AUTO_REFRESH1 s_sdramCurrentState.DO_AUTO_REFRESH1 s_sdramCurrentState.WAIT_PRECHARGE s_sdramCurrentState.DO_PRECHARGE s_sdramCurrentState.WAIT_100_MICRO s_sdramCurrentState.RESET_STATE 
+s_sdramCurrentState.RESET_STATE 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+s_sdramCurrentState.WAIT_100_MICRO 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+s_sdramCurrentState.DO_PRECHARGE 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+s_sdramCurrentState.WAIT_PRECHARGE 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+s_sdramCurrentState.DO_AUTO_REFRESH1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+s_sdramCurrentState.WAIT_AUTO_REFRESH1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+s_sdramCurrentState.DO_AUTO_REFRESH2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+s_sdramCurrentState.WAIT_AUTO_REFRESH2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+s_sdramCurrentState.SET_MODE_REG 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+s_sdramCurrentState.WAIT_MODE_REG 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+s_sdramCurrentState.SET_EXTENDED_MODE_REG 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+s_sdramCurrentState.WAIT_EXTENDED_MODE_REG 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+s_sdramCurrentState.IDLE 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+s_sdramCurrentState.DO_AUTO_REFRESH 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_sdramCurrentState.WAIT_AUTO_REFRESH 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_sdramCurrentState.INIT_READ_WRITE 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_sdramCurrentState.INIT_READ_BURST1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_sdramCurrentState.WAIT_READ_BURST1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_sdramCurrentState.INIT_READ_BURST2 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_sdramCurrentState.WAIT_READ_BURST2 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_sdramCurrentState.WAIT_READ_BURST3 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_sdramCurrentState.DO_READ 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_sdramCurrentState.END_READ_TRANSACTION 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_sdramCurrentState.INIT_WORD_WRITE 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_sdramCurrentState.WRITE_PRECHARGE 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_sdramCurrentState.WRITE_LO 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_sdramCurrentState.WAIT_WRITE_LO 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_sdramCurrentState.WRITE_HI 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_sdramCurrentState.WAIT_WRITE_PRECHARGE 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_sdramCurrentState.WAIT_READ_BURST4 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_sdramCurrentState.WAIT_WRITE_HI 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+s_sdramCurrentState.SECOND_BURST 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |or1420SingleCore|uartBus:uart1|s_readStateReg
+Name s_readStateReg.IDLE s_readStateReg.END s_readStateReg.WAIT 
+s_readStateReg.IDLE 0 0 0 
+s_readStateReg.WAIT 1 0 1 
+s_readStateReg.END 1 1 0 
+
+State Machine - |or1420SingleCore|uartBus:uart1|uartRx:RXC|s_stateMachineReg
+Name s_stateMachineReg.WRITE s_stateMachineReg.RECEIVE s_stateMachineReg.INIT s_stateMachineReg.IDLE 
+s_stateMachineReg.IDLE 0 0 0 0 
+s_stateMachineReg.INIT 0 0 1 1 
+s_stateMachineReg.RECEIVE 0 1 0 1 
+s_stateMachineReg.WRITE 1 0 0 1 
+
+State Machine - |or1420SingleCore|uartBus:uart1|uartTx:TXC|s_stateMachineReg
+Name s_stateMachineReg.IDLE s_stateMachineReg.SHIFT s_stateMachineReg.LOAD 
+s_stateMachineReg.IDLE 0 0 0 
+s_stateMachineReg.LOAD 1 0 1 
+s_stateMachineReg.SHIFT 1 1 0 
